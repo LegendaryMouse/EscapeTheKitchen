@@ -1,6 +1,6 @@
-# Joke Roguelike Unity Game 🎮
+# Escape the Kitchen 🎮
 
-Welcome to Joke Roguelike Unity Game! 🥳
+Welcome to Escape the Kitchen Game! 🥳
 
 ## Description
 
