@@ -27,6 +27,6 @@ This game was created by LMouse and Hamve using Unity and MS Paint.
 
 ## License
 
-This game is licensed under the \[Insert License Here\] license.
+This game is no licensed.
 
 🍅🥕🍍 Enjoy the game! 🍅🥕🍍
