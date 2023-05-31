@@ -34,7 +34,8 @@ public class Enemy : MonoBehaviour
 
     public EnemyType EnemyType;
 
-    public Player player;
+    Player player;
+    Score score;
 
     public bool isDying = false;
 
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
         animation1 = GetComponent<Animator>();
         animation1.Play("Walk");
         player = FindObjectOfType<Player>();
+        score = FindObjectOfType<Score>();
     }
     private void Update()
     {
@@ -100,7 +102,14 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         if (EnemyType == EnemyType.Tomato)
+        {
             tomato.Explosion();
+            score.score += 2;
+        }
+        if (EnemyType == EnemyType.Carrot) 
+        {
+            score.score += 5;
+        }
         Destroy(gameObject);
     }
     private void OnCollisionStay2D(Collision2D collision)

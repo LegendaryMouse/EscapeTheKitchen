@@ -11,7 +11,7 @@ public class Carrot : MonoBehaviour
     private Enemy enemy;
     private Animator animation1;
     private Vector3 targetPosition;
-    private bool facingRight = true;
+    //private bool facingRight = true;
 
     private void Start()
     {

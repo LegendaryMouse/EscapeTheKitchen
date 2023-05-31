@@ -55,16 +55,10 @@ public class Player : MonoBehaviour
         {
             Die();
         }
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Die();
-        }
         if (Input.GetKeyDown(KeyCode.T))
         {
             int i = Random.Range(0, objects.Length);
-            Instantiate(objects[i], transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+            Instantiate(objects[i], transform.position + new Vector3(4, 0, 0), Quaternion.identity);
         }
     }
 

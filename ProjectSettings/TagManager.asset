@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - HPPotion
   - Sheild
+  - Score
   layers:
   - Default
   - TransparentFX
