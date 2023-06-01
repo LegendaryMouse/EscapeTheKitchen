@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovingObst : MonoBehaviour
 {
-    Transform tr;
+    private Transform tr;
     public Vector2 direction;
     public Vector2 translated;
     public Vector2 startingPosition;
@@ -18,11 +18,15 @@ public class MovingObst : MonoBehaviour
     {
         startingPosition = transform.position;
     }
-    void Update()
+
+    private void Update()
     {
         if (target)
         {
-            transform.Translate((target.transform.position - transform.position) / Vector2.Distance(target.transform.position, transform.position) * Time.deltaTime / 20 * speed);
+            if (Vector2.Distance(target.transform.position, transform.position) < 10)
+            {
+                transform.Translate((target.transform.position - transform.position) / Vector2.Distance(target.transform.position, transform.position) * Time.deltaTime / 20 * speed);
+            }
         }
         else
         {

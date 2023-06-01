@@ -10,6 +10,7 @@ TagManager:
   - HPPotion
   - Sheild
   - Score
+  - DeathCounter
   layers:
   - Default
   - TransparentFX
