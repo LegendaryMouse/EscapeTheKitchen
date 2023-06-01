@@ -11,6 +11,11 @@ TagManager:
   - Sheild
   - Score
   - DeathCounter
+  - Weapon
+  - Key
+  - Door
+  - EnemySpawner
+  - RoomSpawner
   layers:
   - Default
   - TransparentFX

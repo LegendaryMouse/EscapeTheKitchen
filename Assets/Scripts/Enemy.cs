@@ -1,5 +1,7 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public enum EnemyType
 {
@@ -12,7 +14,9 @@ public enum EnemyType
 }
 
 public class Enemy : MonoBehaviour
-{    
+{
+    [Header("Classes")] 
+    public EnemyType EnemyType;
     private Tomato tomato;
     private Carrot carrot;
     private Potato potato;
@@ -20,28 +24,29 @@ public class Enemy : MonoBehaviour
     private Cabbage cabbage;
     private Cucumber cucumber;
 
-    public float hp;
+    [Header("Moving")]
     public float speed;
-    public float damage;
 
-    public float reloadTime;
-    public float startReloadTime;
-
-    public Animator animation1;
+    [Header("Health")]
+    public float hp;
+    public bool isDying = false;
     public GameObject damageSound;
     public GameObject dieSound;
     public GameObject particles;
+    public GameObject damageText;
 
-    public EnemyType EnemyType;
+    [Header("Attack")]
+    public float reloadTime;
+    public float startReloadTime;
+    public float damage;
 
-    Player player;
-    Score score;
-
-    public bool isDying = false;
+    public Animator animation1;
+    private Player player;
+    private Score score;
 
     private void Awake()
     {
-        if(EnemyType == EnemyType.Tomato)
+        if (EnemyType == EnemyType.Tomato)
             tomato = GetComponent<Tomato>();
         if (EnemyType == EnemyType.Carrot)
             carrot = GetComponent<Carrot>();
@@ -57,26 +62,27 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         animation1 = GetComponent<Animator>();
-        animation1.Play("Walk");
         player = FindObjectOfType<Player>();
         score = FindObjectOfType<Score>();
+
+        animation1.Play("Walk");
     }
     private void Update()
     {
-        try
-        {
+        if (!isDying)
+            try
+            {
                 if (EnemyType == EnemyType.Carrot && !carrot.isRushing)
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-            else
-            {
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                }
             }
-
-        }
-        catch when (!FindObjectOfType<Player>())
-        {
-            Debug.Log("Game Over!");
-        }
+            catch when (!FindObjectOfType<Player>())
+            {
+                Debug.Log("Game Over!");
+            }
 
         if (hp <= 0 && !isDying)
         {
@@ -85,6 +91,7 @@ public class Enemy : MonoBehaviour
             animation1.Play("Die");
             Invoke(nameof(Die), 1f);
             Instantiate(dieSound, transform.position, Quaternion.identity);
+            Destroy(GetComponent<Collider2D>());
         }
 
 
@@ -98,6 +105,10 @@ public class Enemy : MonoBehaviour
         hp -= damage;
         Instantiate(particles, transform.position, Quaternion.identity);
         Instantiate(damageSound, transform.position, Quaternion.identity);
+
+        GameObject text = Instantiate(damageText, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
+        text.transform.GetComponentInChildren<TextMeshPro>().text = "-"+damage;
+        //text.GetComponent<Animation>().Play();
     }
     private void Die()
     {
@@ -106,7 +117,7 @@ public class Enemy : MonoBehaviour
             tomato.Explosion();
             score.score += 2;
         }
-        if (EnemyType == EnemyType.Carrot) 
+        if (EnemyType == EnemyType.Carrot)
         {
             score.score += 5;
         }

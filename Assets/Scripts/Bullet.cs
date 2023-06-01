@@ -16,7 +16,8 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, distance,  whatIsSolid);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, distance,  whatIsSolid);
+        Debug.DrawRay(transform.position, transform.up);
         if(hit.collider != null)
         {
             if(hit.collider.CompareTag("Enemy"))

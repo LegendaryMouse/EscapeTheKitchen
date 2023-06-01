@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2042788793316595179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3369318747419616798}
+  - component: {fileID: 7408742015311828127}
+  - component: {fileID: -4208019555826818854}
+  m_Layer: 0
+  m_Name: UpRoomSpawner
+  m_TagString: RoomSpawner
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3369318747419616798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042788793316595179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7408742015311828127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042788793316595179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554eeadb1c99a4a4da7f1d4712c29553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomVariations:
+  - {fileID: 4904943052788012882, guid: e29c31bd5b63b934f8b26bcd601cdff0, type: 3}
+  - {fileID: 4904943052788012882, guid: 74f464dab34b0a044b23009727336de9, type: 3}
+  - {fileID: 4904943052788012882, guid: f5d97dd770aa36941b6c83024dc84b41, type: 3}
+  - {fileID: 4904943052788012882, guid: 4e336955c6c123b40a2c8279c8a2cba0, type: 3}
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  isSpawned: 0
+--- !u!58 &-4208019555826818854
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042788793316595179}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

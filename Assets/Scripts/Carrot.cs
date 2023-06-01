@@ -63,6 +63,6 @@ public class Carrot : MonoBehaviour
     private void Flip(float z)
     {
         transform.rotation = Quaternion.Euler(0, 0, z);
-        Debug.Log(z + " flipped");
+        //Debug.Log(z + " flipped");
     }
 }
