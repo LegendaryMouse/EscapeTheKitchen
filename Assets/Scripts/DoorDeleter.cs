@@ -21,7 +21,7 @@ public class DoorDeleter : MonoBehaviour
                 Instantiate(block, transform.position - new Vector3(0.5f, 0, 0), Quaternion.identity);
                 Instantiate(block, transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
             }
-            Debug.Log(transform.position + " " + collision.name);
+            //Debug.Log(transform.position + " " + collision.name);
             Destroy(gameObject);
         }
     }

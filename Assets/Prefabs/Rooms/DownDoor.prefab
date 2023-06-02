@@ -147,10 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3879e62806cf1646a1495bd04ffe628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   pos: {x: 0, y: -16}
-  isTranslating: 0
-  translated: {x: 0, y: 0}
   time: 5
 --- !u!1001 &3500941716106135766
 PrefabInstance:

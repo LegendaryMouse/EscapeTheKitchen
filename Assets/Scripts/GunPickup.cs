@@ -13,7 +13,7 @@ public class GunPickup : MonoBehaviour
             Player p = collision.GetComponent<Player>();
             for (int i = 0; i < p.weapons.Length; i++)
             {
-                if (!p.weapons[i].gameObject)
+                if (!p.weapons[i])
                 {
                     p.weapons[i] = prefabSelf;
                     //Debug.Log("added");

@@ -20,7 +20,7 @@ public class RoomMover : MonoBehaviour
             //isTranslating = true;
             cam.transform.Translate(pos);
             player.transform.Translate(pos / 4);
-            Debug.Log("moved");
+            //Debug.Log("moved");
         }
     }
     public void Update()

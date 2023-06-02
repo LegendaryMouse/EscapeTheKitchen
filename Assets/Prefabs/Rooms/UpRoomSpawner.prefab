@@ -53,7 +53,10 @@ MonoBehaviour:
   - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
   - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
   - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
-  isSpawned: 0
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  - {fileID: 4904943052788012882, guid: 5cef1bae5d0ed7f4bad25172be4d5635, type: 3}
+  spawned: 0
 --- !u!58 &-4208019555826818854
 CircleCollider2D:
   m_ObjectHideFlags: 0

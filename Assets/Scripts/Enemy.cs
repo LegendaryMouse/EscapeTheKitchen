@@ -1,7 +1,9 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEngine.ParticleSystem;
 
 public enum EnemyType
 {
@@ -15,7 +17,7 @@ public enum EnemyType
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Classes")] 
+    [Header("Classes")]
     public EnemyType EnemyType;
     private Tomato tomato;
     private Carrot carrot;
@@ -40,9 +42,12 @@ public class Enemy : MonoBehaviour
     public float startReloadTime;
     public float damage;
 
+    [Header("Special")]
     public Animator animation1;
     private Player player;
     private Score score;
+    public GameObject[] dieDrop;
+    public float dieDropChance;
 
     private void Awake()
     {
@@ -59,6 +64,7 @@ public class Enemy : MonoBehaviour
         if (EnemyType == EnemyType.Cucumber)
             cucumber = GetComponent<Cucumber>();
     }
+
     private void Start()
     {
         animation1 = GetComponent<Animator>();
@@ -67,6 +73,7 @@ public class Enemy : MonoBehaviour
 
         animation1.Play("Walk");
     }
+
     private void Update()
     {
         if (!isDying)
@@ -100,17 +107,38 @@ public class Enemy : MonoBehaviour
             reloadTime -= Time.deltaTime;
         }
     }
+
     public void TakeDamage(float damage)
     {
         hp -= damage;
+
+        ParticleSystem.MainModule ps = particles.GetComponent<ParticleSystem>().main;
+
+        if (tomato)
+            ps.startColor = new Color(1, 0, 0);
+        if (carrot)
+            ps.startColor = new Color(0.8f, 0.4f, 0);
+
         Instantiate(particles, transform.position, Quaternion.identity);
         Instantiate(damageSound, transform.position, Quaternion.identity);
 
+
         GameObject text = Instantiate(damageText, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
-        text.transform.GetComponentInChildren<TextMeshPro>().text = "-"+damage;
-        //text.GetComponent<Animation>().Play();
+        text.transform.localScale = new Vector3(0.5f + (damage / 10), 0.5f + (damage / 10), 1);
+        text.transform.GetComponentInChildren<TextMeshPro>().color = new Color(damage / 10, 1 - (damage / 10), 0);
+        text.transform.GetComponentInChildren<TextMeshPro>().text = "-" + damage;
+
+        DamageSlowing(damage, damage / 5);
     }
+
     private void Die()
+    {
+        DieDrop();
+        AddScore();
+        Destroy(gameObject);
+    }
+
+    private void AddScore()
     {
         if (EnemyType == EnemyType.Tomato)
         {
@@ -121,8 +149,33 @@ public class Enemy : MonoBehaviour
         {
             score.score += 5;
         }
-        Destroy(gameObject);
     }
+
+    private void DieDrop()
+    {
+        float rand = Random.Range(0, 100);
+        if (dieDropChance > rand)
+        {
+            Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
+        }
+    }
+
+    private void DamageSlowing(float slowing, float slowingTime)
+    {
+        if (speed > 0)
+        {
+            speed -= slowing;
+            StartCoroutine(SpeedNormalizer(slowing, slowingTime));
+        }
+    }
+
+    private IEnumerator SpeedNormalizer(float speedUp, float time)
+    {
+        yield return new WaitForSeconds(time);
+        speed += speedUp;
+
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
