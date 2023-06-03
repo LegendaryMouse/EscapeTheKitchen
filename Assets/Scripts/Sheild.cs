@@ -39,6 +39,6 @@ public class Sheild : MonoBehaviour
     }
     public void ReduceTime(float damage)
     {
-        image.fillAmount -= damage / 15f;
+        image.fillAmount -= damage / 5f;
     }
 }

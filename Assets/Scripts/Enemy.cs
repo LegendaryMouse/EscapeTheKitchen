@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Moving")]
     public float speed;
+    Rigidbody2D rb;
 
     [Header("Health")]
     public float hp;
@@ -71,6 +72,8 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<Player>();
         score = FindObjectOfType<Score>();
 
+        rb = GetComponent<Rigidbody2D>(); 
+
         animation1.Play("Walk");
     }
 
@@ -83,7 +86,7 @@ public class Enemy : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                 else
                 {
-                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                   rb.AddForce(Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime));
                 }
             }
             catch when (!FindObjectOfType<Player>())
@@ -157,6 +160,12 @@ public class Enemy : MonoBehaviour
         if (dieDropChance > rand)
         {
             Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
+            if(dieDropChance-rand>100)
+                Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
+            if (dieDropChance - rand >200)
+                Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
+            if (dieDropChance - rand >300)
+                Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
         }
     }
 
@@ -183,6 +192,14 @@ public class Enemy : MonoBehaviour
             if (reloadTime <= 0)
             {
                 collision.collider.GetComponent<Player>().TakeDamage(damage);
+                reloadTime = startReloadTime;
+            }
+        }
+        if(collision.collider.CompareTag("Obst"))
+        {
+            if (reloadTime <= 0)
+            {
+                collision.collider.GetComponent<Obst>().TakeDamage(damage);
                 reloadTime = startReloadTime;
             }
         }

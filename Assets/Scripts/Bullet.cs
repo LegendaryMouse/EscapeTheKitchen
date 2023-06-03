@@ -50,7 +50,19 @@ public class Bullet : MonoBehaviour
             //Instantiate(particles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        if (hit.CompareTag("Wall"))
+
+        if (hit.CompareTag("Obst"))
+        {
+            if (Random.Range(0, 100) < critChance)
+                hit.GetComponent<Obst>().TakeDamage(damage * critCof);
+            else
+                hit.GetComponent<Obst>().TakeDamage(damage);
+
+            Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+
+        if (hit.CompareTag("Wall") || hit.CompareTag("Door"))
         {
             Instantiate(particles, transform.position, Quaternion.identity);
             Destroy(gameObject);

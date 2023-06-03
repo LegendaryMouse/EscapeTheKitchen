@@ -9,13 +9,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        Spawn();
+        //Spawn();
     }
 
-    void Spawn()
+    public void Spawn()
     {
         int rand = Random.Range(0, spawnList.Length);
-
         Instantiate(spawnList[rand], transform.position, Quaternion.identity);
+        rand = Random.Range(0, spawnList.Length);
+        Instantiate(spawnList[rand], transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 }

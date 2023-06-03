@@ -16,6 +16,7 @@ TagManager:
   - Door
   - EnemySpawner
   - RoomSpawner
+  - Obst
   layers:
   - Default
   - TransparentFX

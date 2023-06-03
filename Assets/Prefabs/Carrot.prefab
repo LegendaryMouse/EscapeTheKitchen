@@ -145,7 +145,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4085246193677388675
 MonoBehaviour:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 1
-  speed: 5
+  speed: 4
   hp: 30
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
@@ -174,7 +174,7 @@ MonoBehaviour:
   dieDrop:
   - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 749152774679433685, guid: 19d5be1043393864a8e004026c9eaaba, type: 3}
-  dieDropChance: 35
+  dieDropChance: 15
 --- !u!114 &280273661205392308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9532a9a1b963d6245af58fca89650fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rushTime: 3
+  rushTime: 1.5
   startRushTime: 3
   rushSpeed: 7
   rushRange: 5

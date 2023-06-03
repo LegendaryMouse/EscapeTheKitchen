@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 0
-  speed: 4
+  speed: 7
   hp: 10
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
@@ -152,9 +152,9 @@ MonoBehaviour:
   animation1: {fileID: 0}
   dieDrop:
   - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
+  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 5010682347443423549, guid: bcc32837ddc80de46ab49503fc8aa19c, type: 3}
-  - {fileID: 4085246193677388679, guid: d813811c859541047b0839d90b7b392a, type: 3}
-  dieDropChance: 50
+  dieDropChance: 25
 --- !u!50 &1187210546538544097
 Rigidbody2D:
   serializedVersion: 4
@@ -174,7 +174,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &580399034095678399
 MonoBehaviour:
