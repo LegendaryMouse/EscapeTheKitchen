@@ -44,19 +44,21 @@ public class Carrot : MonoBehaviour
                 enemy.animation1.Play("Walk");
             Flip(0);
         }
-
-        targets = Physics2D.OverlapCircleAll(transform.position, rushRange);
-        for (int i=0; i < targets.Length; i++)
+        if (!isRushing)
+            targets = Physics2D.OverlapCircleAll(transform.position, rushRange);
+        for (int i = 0; i < targets.Length; i++)
         {
-            if (targets[i].gameObject.CompareTag("Player"))
-            {
-                if (!isRushing)
+            if (targets[i])
+                if (targets[i].gameObject.CompareTag("Player"))
                 {
-                    targetPosition = targets[i].gameObject.transform.position;
-                    isRushing = true;
-                    rushTime = startRushTime;
+                    if (!isRushing)
+                    {
+                        targetPosition = targets[i].gameObject.transform.position;
+                        transform.position = Vector2.MoveTowards(transform.position, targetPosition, -transform.localScale.y);
+                        isRushing = true;
+                        rushTime = startRushTime;
+                    }
                 }
-            }
         }
     }
 

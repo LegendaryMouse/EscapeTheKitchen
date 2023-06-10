@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5388656376199905360}
   - component: {fileID: 5388656376199905359}
   m_Layer: 0
-  m_Name: Gun 2
+  m_Name: Gun2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   shotPoint: {fileID: 5388656378167008535}
   bullet: {fileID: 5554762268254098049, guid: 7d4c1f31f0a10564d8e84fc7ef4b16b9, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
+  pickupPrefab: {fileID: 2792775083891657723, guid: 0231a49c713ec4b48bfe8b139c32926f, type: 3}
 --- !u!1 &5388656376367819788
 GameObject:
   m_ObjectHideFlags: 0

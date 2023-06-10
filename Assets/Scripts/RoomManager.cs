@@ -31,17 +31,25 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !enemiesSpawned)
-        {
-            for (int i = 0; i < enemySpawners.Count; i++)
+        if (!enemiesSpawned)
+            if (collision.CompareTag("Player"))
             {
-                if (enemySpawners[i])
-                    enemySpawners[i].GetComponent<EnemySpawner>().Spawn();
+                for (int i = 0; i < enemySpawners.Count; i++)
+                {
+                    if (enemySpawners[i])
+                        enemySpawners[i].GetComponent<EnemySpawner>().Spawn();
+                }
+                enemiesSpawned = true;
             }
-            enemiesSpawned = true;
-        }
+
         if (collision.CompareTag("Player") && !doorOpened)
         {
+            StartCoroutine(DoorOpen());
+        }
+
+        IEnumerator DoorOpen()
+        {
+
             all = new List<Collider2D>(Physics2D.OverlapAreaAll(transform.position - new Vector3(13, 7), transform.position + new Vector3(13, 7)));
             enemies.Clear();
             for (int i = 0; i < all.Count; i++)
@@ -64,7 +72,9 @@ public class RoomManager : MonoBehaviour
                         }
                 }
                 doorOpened = true;
+
             }
+            yield return new WaitForSeconds(1);
         }
     }
 }

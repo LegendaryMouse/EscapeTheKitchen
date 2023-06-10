@@ -15,8 +15,25 @@ public class Obst : MonoBehaviour
 
     private void Update()
     {
-        if(hp < 0) 
+        if (hp < 0)
         {
+            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().Play();
+            Destroy(GetComponent<Collider2D>());
+
+            if (transform.childCount > 0)
+                for (int i = 0; i < transform.childCount + 2; i++)
+            {
+                try
+                {
+                    transform.GetChild(0).SetParent(null);
+                }
+                catch
+                {
+                    
+                }
+            }
+
             Destroy(gameObject);
         }
     }

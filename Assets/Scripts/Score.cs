@@ -21,8 +21,11 @@ public class Score : MonoBehaviour
         {
             score = 0;
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+        PlayerPrefs.SetFloat("score", score);            
+        }
 
-        PlayerPrefs.SetFloat("score", score);
         string rawText = "Score: " + score;
         text.text = rawText;
 

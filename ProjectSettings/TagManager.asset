@@ -17,6 +17,8 @@ TagManager:
   - EnemySpawner
   - RoomSpawner
   - Obst
+  - Slot
+  - Manager
   layers:
   - Default
   - TransparentFX

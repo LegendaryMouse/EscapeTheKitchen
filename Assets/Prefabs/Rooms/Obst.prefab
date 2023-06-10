@@ -133,7 +133,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!114 &2619922073808274048
 MonoBehaviour:
@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0fd84a983dbb646a908936802c3fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
-  dfCof: 0.8
+  hp: 15
+  dfCof: 1
 --- !u!82 &5384918558152352865
 AudioSource:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b126abfc39ee5234784e6a1581ad7701, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

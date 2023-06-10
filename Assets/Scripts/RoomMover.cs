@@ -18,7 +18,7 @@ public class RoomMover : MonoBehaviour
             cam = GameObject.FindGameObjectWithTag("MainCamera");
             player = GameObject.FindGameObjectWithTag("Player");
             //isTranslating = true;
-            cam.transform.Translate(pos);
+            //cam.transform.Translate(pos);
             player.transform.Translate(pos / 4);
             //Debug.Log("moved");
         }

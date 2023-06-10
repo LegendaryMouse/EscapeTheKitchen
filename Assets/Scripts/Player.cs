@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,23 +31,29 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI keyUI;
     public int keysAmount;
 
-    [Header("Admin")]
-    public GameObject[] objects;
+    [Header("Inventory")]
+    public Slot[] slot;
     public GameObject[] weapons;
-    public GameObject currentWeapon;
-    public int weaponNumber = 0;
+    public GameObject currentItem;
+    public int currentNumber = 0;
+    public GameObject hands;
 
     private void Start()
     {
+        /*for (int i = 0; i < inventoryCapaticy; i++)
+        {
+            Instantiate(slot)
+        }*/
+
         rb = GetComponent<Rigidbody2D>();
 
-        currentWeapon = FindChildWithTag("Weapon");
+        currentItem = FindChildWithTag("Weapon");
     }
 
     private void Update()
     {
         hpUI.text = ("HP " + hp);
-        keyUI.text = (""+keysAmount);
+        keyUI.text = ("" + keysAmount);
 
         moveInput = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
@@ -66,14 +73,33 @@ public class Player : MonoBehaviour
         {
             Die();
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            int i = Random.Range(0, objects.Length);
-            Instantiate(objects[i], transform.position + new Vector3(4, 0, 0), Quaternion.identity);
-        }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             SwitchWeapon(-1);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DropWeapon();
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SwitchWeapon(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SwitchWeapon(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            SwitchWeapon(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad4))
+        {
+            SwitchWeapon(3);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad5))
+        {
+            SwitchWeapon(4);
         }
     }
 
@@ -134,30 +160,78 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SwitchWeapon(int weaponNumberF)
+    public void SwitchWeapon(int currentNumberF)
     {
-        if (weaponNumberF == -1)
+        if (currentNumberF == -1)
         {
-            if (weapons[weaponNumber + 1])
-                weaponNumber++;
+            if (currentNumber < weapons.Length - 1)
+            {
+                slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+                currentNumber++;
+                slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+            }
             else
-                weaponNumber = 0;
+            {
+                slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+                currentNumber = 0;
+                slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+            }
         }
         else
-            weaponNumber = weaponNumberF;
+        {
+            slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+            currentNumber = currentNumberF;
+            slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+        }
 
-        Destroy(FindChildWithTag("Weapon"));
+
+        if(AllChildWithTag("Weapon").Count > 0)
+        {
+            for(int i = 0; i < AllChildWithTag("Weapon").Count; i++)
+            {
+                Destroy(AllChildWithTag("Weapon")[i]);
+            }
+        }
 
         if (facingRight)
         {
-            currentWeapon = Instantiate(weapons[weaponNumber], transform.position, Quaternion.identity);
+            if ((weapons[currentNumber]))
+                currentItem = Instantiate(weapons[currentNumber], transform.position, Quaternion.identity);
+            else
+                currentItem = Instantiate(hands, transform.position, Quaternion.identity);
         }
         else
         {
             Flip();
-            currentWeapon = Instantiate(weapons[weaponNumber], transform.position, Quaternion.identity);
+
+            if ((weapons[currentNumber]))
+                currentItem = Instantiate(weapons[currentNumber], transform.position, Quaternion.identity);
+            else
+                currentItem = Instantiate(hands, transform.position, Quaternion.identity);
         }
-        currentWeapon.transform.SetParent(gameObject.transform);
+
+        currentItem.transform.SetParent(gameObject.transform);
+    }
+
+    public void DropWeapon()
+    {
+        if (currentItem.GetComponent<Gun>())
+        {
+            weapons[currentNumber] = null;
+            Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
+            GameObject weapon = FindChildWithTag("Weapon");
+            Instantiate(weapon.GetComponent<Gun>().pickupPrefab, transform.position - new Vector3(0, 2, 0), Quaternion.identity);
+            Destroy(weapon);
+            SwitchWeapon(currentNumber);
+        }
+        if (currentItem.GetComponent<Knife>())
+        {
+            weapons[currentNumber] = null;
+            Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
+            GameObject weapon = FindChildWithTag("Weapon");
+            Destroy(weapon);
+            SwitchWeapon(currentNumber);
+        }
     }
 
     public GameObject FindChildWithTag(string tag)
@@ -171,5 +245,18 @@ public class Player : MonoBehaviour
             }
         }
         return null;
+    }
+    public List<GameObject> AllChildWithTag(string tag)
+    {
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        List<GameObject> all = new List<GameObject>();
+        foreach (Transform transform in allChildren)
+        {
+            if (transform.CompareTag(tag))
+            {
+                all.Add(transform.gameObject);
+            }
+        }
+        return all;
     }
 }

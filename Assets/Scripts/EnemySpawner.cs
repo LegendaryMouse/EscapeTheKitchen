@@ -6,19 +6,27 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] spawnList;
     public bool spawned;
+    public GameObject warningSignPrefab;
+    public float timeDelay;
+    GameObject warningSign;
 
     private void Start()
     {
         //Spawn();
     }
-
-    public void Spawn()
+    public void SpawnWithWarning()
     {
+        warningSign = Instantiate(warningSignPrefab, transform.position, Quaternion.identity);
+        Invoke("Spawn", timeDelay);
+    }
+        public void Spawn()
+    {
+        Destroy(warningSign);
         int rand = Random.Range(0, spawnList.Length);
         Instantiate(spawnList[rand], transform.position, Quaternion.identity);
-        rand = Random.Range(0, spawnList.Length);
-        Instantiate(spawnList[rand], transform.position, Quaternion.identity);
-
-        Destroy(gameObject);
+        //rand = Random.Range(0, spawnList.Length);
+        //Instantiate(spawnList[rand], transform.position, Quaternion.identity);
+        spawned = true;
+        //Destroy(gameObject);
     }
 }

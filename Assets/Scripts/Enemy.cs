@@ -28,7 +28,8 @@ public class Enemy : MonoBehaviour
 
     [Header("Moving")]
     public float speed;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    public bool isColliding;
 
     [Header("Health")]
     public float hp;
@@ -49,6 +50,7 @@ public class Enemy : MonoBehaviour
     private Score score;
     public GameObject[] dieDrop;
     public float dieDropChance;
+    public float enemyScore;
 
     private void Awake()
     {
@@ -72,13 +74,14 @@ public class Enemy : MonoBehaviour
         player = FindObjectOfType<Player>();
         score = FindObjectOfType<Score>();
 
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
 
-        animation1.Play("Walk");
+        animation1.Play("MoveDown");
     }
 
     private void Update()
     {
+        //if (!isColliding)
         if (!isDying)
             try
             {
@@ -86,7 +89,18 @@ public class Enemy : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
                 else
                 {
-                   rb.AddForce(Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime));
+                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+
+                    {
+                        if ((player.transform.position - transform.position).x > 0)
+                        {
+                            animation1.Play("MoveRight");
+                        }
+                        else
+                        {
+                            animation1.Play("MoveLeft");
+                        }
+                    }
                 }
             }
             catch when (!FindObjectOfType<Player>())
@@ -103,6 +117,7 @@ public class Enemy : MonoBehaviour
             Instantiate(dieSound, transform.position, Quaternion.identity);
             Destroy(GetComponent<Collider2D>());
         }
+
 
 
         if (reloadTime > 0)
@@ -136,22 +151,20 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        DetachParents();
         DieDrop();
         AddScore();
         Destroy(gameObject);
+
+        if (tomato)
+        {
+            tomato.Explosion();
+        }
     }
 
     private void AddScore()
     {
-        if (EnemyType == EnemyType.Tomato)
-        {
-            tomato.Explosion();
-            score.score += 2;
-        }
-        if (EnemyType == EnemyType.Carrot)
-        {
-            score.score += 5;
-        }
+        score.score += enemyScore;
     }
 
     private void DieDrop()
@@ -160,21 +173,26 @@ public class Enemy : MonoBehaviour
         if (dieDropChance > rand)
         {
             Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
-            if(dieDropChance-rand>100)
+            if (dieDropChance - rand > 100)
                 Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
-            if (dieDropChance - rand >200)
+            if (dieDropChance - rand > 200)
                 Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
-            if (dieDropChance - rand >300)
+            if (dieDropChance - rand > 300)
                 Instantiate(dieDrop[Random.Range(0, dieDrop.Length)], transform.position, Quaternion.identity);
         }
     }
 
     private void DamageSlowing(float slowing, float slowingTime)
     {
-        if (speed > 0)
+        if (speed > slowing)
         {
             speed -= slowing;
             StartCoroutine(SpeedNormalizer(slowing, slowingTime));
+        }
+        else
+        {
+            StartCoroutine(SpeedNormalizer(speed, slowingTime));
+            speed = -0.1f;
         }
     }
 
@@ -187,6 +205,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        isColliding = true;
         if (collision.collider.CompareTag("Player"))
         {
             if (reloadTime <= 0)
@@ -195,7 +214,7 @@ public class Enemy : MonoBehaviour
                 reloadTime = startReloadTime;
             }
         }
-        if(collision.collider.CompareTag("Obst"))
+        if (collision.collider.CompareTag("Obst"))
         {
             if (reloadTime <= 0)
             {
@@ -203,5 +222,32 @@ public class Enemy : MonoBehaviour
                 reloadTime = startReloadTime;
             }
         }
+
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isColliding = false;
+    }
+
+    public void DetachParents()
+    {
+        if (transform.childCount > 0)
+        {
+            for (int i = 0; i <= transform.childCount + 1; i++)
+            {
+                try
+                {
+                    Debug.Log("detaching");
+                    transform.GetChild(0).SetParent(null);
+                }
+                catch
+                {
+                    
+                }
+            }
+        }
+    }
+
 }
+

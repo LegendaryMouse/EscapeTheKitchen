@@ -22,7 +22,7 @@ public class Mixer : MonoBehaviour
     public GameObject currentCard;
     public float closeTime;
     public bool isCardClosed = true;
-    bool win = false;
+    //bool win = false;
 
 
     private void Start()

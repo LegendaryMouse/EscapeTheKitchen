@@ -161,7 +161,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 1
   speed: 8
-  hp: 10
+  isColliding: 0
+  hp: 15
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
   dieSound: {fileID: 1062947579324547207, guid: b1b0cd3eb74179a4db6c4d86177cfc05, type: 3}
@@ -174,7 +175,8 @@ MonoBehaviour:
   dieDrop:
   - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 749152774679433685, guid: 19d5be1043393864a8e004026c9eaaba, type: 3}
-  dieDropChance: 100
+  dieDropChance: 25
+  enemyScore: 10
 --- !u!114 &280273661205392308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rushTime: 1
   startRushTime: 1
-  rushSpeed: 16
+  rushSpeed: 12
   rushRange: 9
   isRushing: 0

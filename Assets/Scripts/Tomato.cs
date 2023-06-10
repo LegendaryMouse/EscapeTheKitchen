@@ -18,7 +18,9 @@ public class Tomato : MonoBehaviour
             if (targets[i].tag == "Player")
                 targets[i].GetComponent<Player>().TakeDamage(explosionDamage);
             if(hitAllies && targets[i].tag == "Enemy")
-                targets[i].GetComponent<Enemy>().TakeDamage(explosionDamage);
+                targets[i].GetComponent<Enemy>().TakeDamage(explosionDamage / 3);
+            if (targets[i].tag == "Obst")
+                targets[i].GetComponent<Obst>().TakeDamage(explosionDamage);
         }
     }
 }

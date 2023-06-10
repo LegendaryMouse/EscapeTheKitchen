@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnList:
-  - {fileID: 5010682347443423549, guid: bcc32837ddc80de46ab49503fc8aa19c, type: 3}
-  - {fileID: 749152774679433685, guid: 19d5be1043393864a8e004026c9eaaba, type: 3}
+  - {fileID: 2492706710727236144, guid: d31c1753f56a17d43a08324e47fa0ec8, type: 3}
+  - {fileID: 2492706710727236144, guid: d31c1753f56a17d43a08324e47fa0ec8, type: 3}
   - {fileID: 4085246193677388679, guid: d813811c859541047b0839d90b7b392a, type: 3}
   - {fileID: 4085246193677388679, guid: d813811c859541047b0839d90b7b392a, type: 3}
   - {fileID: 2492706710727236144, guid: d31c1753f56a17d43a08324e47fa0ec8, type: 3}
@@ -55,6 +55,8 @@ MonoBehaviour:
   - {fileID: 2492706710727236144, guid: 6932c06562fd98b4ab90561d87a33552, type: 3}
   - {fileID: 4085246193677388679, guid: 9522113a982ca4e419e81c3bc92bf99d, type: 3}
   spawned: 0
+  warningSignPrefab: {fileID: 4381810136585406411, guid: cae5d47faafd5824db2a649dec46176b, type: 3}
+  timeDelay: 2
 --- !u!58 &758442886552981855
 CircleCollider2D:
   m_ObjectHideFlags: 0

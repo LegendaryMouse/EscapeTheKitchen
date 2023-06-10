@@ -10,6 +10,7 @@ public class Gun : MonoBehaviour
     public Transform shotPoint;
     public GameObject bullet;
     public GameObject shootSound;
+    public GameObject pickupPrefab;
 
     bool facingRight = true;
     private Vector2 moveInput;

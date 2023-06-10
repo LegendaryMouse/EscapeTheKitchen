@@ -26,8 +26,8 @@ public class Card : MonoBehaviour
                 mixer.isCardClosed = false;
                 if (mixer.currentNumber == int.Parse(transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text))
                 {
-                    transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().color = Color.green;
-                    mixer.currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().color = Color.green;
+                    transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().color = new Color(0,1,0,0.2f);
+                    mixer.currentCard.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().color = new Color(0,1,0,0.2f);
                     Invoke("CardDelete", mixer.closeTime);
                 }
                 else

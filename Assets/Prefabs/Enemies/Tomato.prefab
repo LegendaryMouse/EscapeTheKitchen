@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2492706710727236143}
   - component: {fileID: 2492706710727236142}
-  - component: {fileID: 2492706710727236145}
   - component: {fileID: 2492706710727236140}
   - component: {fileID: 2492706710727236141}
   - component: {fileID: 1187210546538544097}
   - component: {fileID: 580399034095678399}
+  - component: {fileID: 7152541100626628859}
   m_Layer: 6
   m_Name: Tomato
   m_TagString: Enemy
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -44049788, guid: 21d7c2f838be27945abf166c7cad9ac5, type: 3}
+  m_Sprite: {fileID: 1299357085, guid: aa338fcdd35969d409e4d9f630a4d4d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,27 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &2492706710727236145
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2492706710727236144}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9b8441cf1661a194191fe031dd5f4d7b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &2492706710727236140
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -139,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 0
-  speed: 7
+  speed: 5
+  isColliding: 0
   hp: 10
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
@@ -155,6 +135,7 @@ MonoBehaviour:
   - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 5010682347443423549, guid: bcc32837ddc80de46ab49503fc8aa19c, type: 3}
   dieDropChance: 25
+  enemyScore: 2
 --- !u!50 &1187210546538544097
 Rigidbody2D:
   serializedVersion: 4
@@ -188,6 +169,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99fa90ddbcfb4444287a34938628b682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionRadius: 5
-  explosionDamage: 3
-  hitAllies: 0
+  explosionRadius: 4
+  explosionDamage: 1
+  hitAllies: 1
+--- !u!95 &7152541100626628859
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492706710727236144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 82cee71d3e83bbc4098e3fd64ba35ac1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
