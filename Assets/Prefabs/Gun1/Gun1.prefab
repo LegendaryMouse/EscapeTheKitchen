@@ -133,9 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4038ebe2f4d2149b5e6e17122141a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ammoCost: 1
+  bulletsPerShot: 1
   offsetDegrees: 0
   reloadTime: 0.1
   startReloadTime: 0.1
+  razbros: 10
   shotPoint: {fileID: 4649662251799996213}
   bullet: {fileID: 5554762268254098049, guid: 6e63affb231410349aebd13a7cdd4bec, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}

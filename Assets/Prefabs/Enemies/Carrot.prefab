@@ -161,22 +161,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 1
   speed: 4
-  isColliding: 0
   hp: 30
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
   dieSound: {fileID: 1062947579324547207, guid: b1b0cd3eb74179a4db6c4d86177cfc05, type: 3}
   particles: {fileID: 5604371697696484298, guid: f7d5fba1b91ac1b46b0bb7d05b8a64d5, type: 3}
   damageText: {fileID: 5787116593725216658, guid: db9fb930a0e20854382a0856b0f78d0a, type: 3}
-  reloadTime: 0.5
-  startReloadTime: 0.5
-  damage: 2
+  reloadTime: 1
+  startReloadTime: 1
+  damage: 1
   animation1: {fileID: 0}
   dieDrop:
-  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 749152774679433685, guid: 19d5be1043393864a8e004026c9eaaba, type: 3}
-  dieDropChance: 25
-  enemyScore: 5
+  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
+  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
+  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
+  dieDropChance: 20
+  enemyScore: 20
 --- !u!114 &280273661205392308
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ TagManager:
   - Obst
   - Slot
   - Manager
+  - Ammo
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Enemy
   - Player
   - Solid
-  - 
+  - MinimapSign
   - 
   - 
   - 

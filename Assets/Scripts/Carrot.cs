@@ -42,6 +42,7 @@ public class Carrot : MonoBehaviour
             isRushing = false;
             if (!enemy.isDying)
                 enemy.animation1.Play("Walk");
+
             Flip(0);
         }
         if (!isRushing)

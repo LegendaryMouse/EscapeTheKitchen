@@ -101,13 +101,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   distance: 20
-  damage: 500
-  critChance: 25
-  critCof: 2
+  damage: 1
+  critChance: 99
+  critCof: 500
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 320
-  particles: {fileID: 5604371697696484298, guid: 5d40a4a7037c79c468f22ba5df2a8861, type: 3}
+  particles: {fileID: 0}
+  sticky: 0
+  piercing: 1
+  piercingStrength: 2
+  damageDelayTime: 0.1
 --- !u!114 &249474553195828130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc02c3627352a254b81dda17f168bc99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
+  time: 2
 --- !u!70 &8148047279033648392
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

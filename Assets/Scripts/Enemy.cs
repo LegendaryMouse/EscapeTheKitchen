@@ -29,10 +29,10 @@ public class Enemy : MonoBehaviour
     [Header("Moving")]
     public float speed;
     private Rigidbody2D rb;
-    public bool isColliding;
 
     [Header("Health")]
     public float hp;
+    float maxHp;
     public bool isDying = false;
     public GameObject damageSound;
     public GameObject dieSound;
@@ -47,10 +47,9 @@ public class Enemy : MonoBehaviour
     [Header("Special")]
     public Animator animation1;
     private Player player;
-    private Score score;
     public GameObject[] dieDrop;
     public float dieDropChance;
-    public float enemyScore;
+    public int enemyScore;
 
     private void Awake()
     {
@@ -72,11 +71,12 @@ public class Enemy : MonoBehaviour
     {
         animation1 = GetComponent<Animator>();
         player = FindObjectOfType<Player>();
-        score = FindObjectOfType<Score>();
 
         rb = GetComponent<Rigidbody2D>();
 
         animation1.Play("MoveDown");
+
+        maxHp = hp;
     }
 
     private void Update()
@@ -85,23 +85,28 @@ public class Enemy : MonoBehaviour
         if (!isDying)
             try
             {
-                if (EnemyType == EnemyType.Carrot && !carrot.isRushing)
-                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-                else
-                {
-                    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-
+                if (Vector2.Distance(transform.position, player.transform.position) < 20)
+                    if (EnemyType == EnemyType.Carrot && !carrot.isRushing)
                     {
-                        if ((player.transform.position - transform.position).x > 0)
+                        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        rb.velocity = (-transform.position + player.transform.position) * speed / Vector3.Distance(transform.position, player.transform.position);
+                    }
+                    else
+                    {
+                        //transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                        rb.velocity = (-transform.position + player.transform.position) * speed / Vector3.Distance(transform.position, player.transform.position);
+
                         {
-                            animation1.Play("MoveRight");
-                        }
-                        else
-                        {
-                            animation1.Play("MoveLeft");
+                            if ((player.transform.position - transform.position).x > 0)
+                            {
+                                animation1.Play("MoveRight");
+                            }
+                            else
+                            {
+                                animation1.Play("MoveLeft");
+                            }
                         }
                     }
-                }
             }
             catch when (!FindObjectOfType<Player>())
             {
@@ -142,11 +147,36 @@ public class Enemy : MonoBehaviour
 
 
         GameObject text = Instantiate(damageText, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
-        text.transform.localScale = new Vector3(0.5f + (damage / 10), 0.5f + (damage / 10), 1);
-        text.transform.GetComponentInChildren<TextMeshPro>().color = new Color(damage / 10, 1 - (damage / 10), 0);
+        text.transform.GetComponentInChildren<TextMeshPro>().color = new Color(1, 1, 0, 1);
         text.transform.GetComponentInChildren<TextMeshPro>().text = "-" + damage;
 
         DamageSlowing(damage, damage / 5);
+
+        if(tomato && tomato.boss)
+        {
+            if (hp > maxHp / 5)
+            {
+                if (Random.Range(0, 100) > 90)
+                {
+                    Instantiate(tomato.megaMinion, transform.position, Quaternion.identity);
+                }
+                else if (Random.Range(0, 100) > 75)
+                {
+                    Instantiate(tomato.minion, transform.position, Quaternion.identity);
+                }
+            }
+            else
+            {
+                if (Random.Range(0, 100) > 50)
+                {
+                    Instantiate(tomato.megaMinion, transform.position, Quaternion.identity);
+                }
+                if (Random.Range(0, 100) > 0)
+                {
+                    Instantiate(tomato.minion, transform.position, Quaternion.identity);
+                }
+            }
+        }    
     }
 
     private void Die()
@@ -164,7 +194,7 @@ public class Enemy : MonoBehaviour
 
     private void AddScore()
     {
-        score.score += enemyScore;
+        player.ammoAmount += enemyScore;
     }
 
     private void DieDrop()
@@ -205,7 +235,6 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        isColliding = true;
         if (collision.collider.CompareTag("Player"))
         {
             if (reloadTime <= 0)
@@ -225,11 +254,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isColliding = false;
-    }
-
     public void DetachParents()
     {
         if (transform.childCount > 0)
@@ -243,11 +267,10 @@ public class Enemy : MonoBehaviour
                 }
                 catch
                 {
-                    
+
                 }
             }
         }
     }
-
 }
 

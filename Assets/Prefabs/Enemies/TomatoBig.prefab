@@ -119,7 +119,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyType: 0
   speed: 3
-  isColliding: 0
   hp: 60
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
@@ -128,12 +127,12 @@ MonoBehaviour:
   damageText: {fileID: 5787116593725216658, guid: db9fb930a0e20854382a0856b0f78d0a, type: 3}
   reloadTime: 1
   startReloadTime: 1
-  damage: 3
+  damage: 1
   animation1: {fileID: 0}
   dieDrop:
   - {fileID: 2492706710727236144, guid: d31c1753f56a17d43a08324e47fa0ec8, type: 3}
   dieDropChance: 400
-  enemyScore: 15
+  enemyScore: 50
 --- !u!50 &1187210546538544097
 Rigidbody2D:
   serializedVersion: 4
@@ -168,8 +167,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 6
-  explosionDamage: 3
+  explosionDamage: 1
   hitAllies: 1
+  boss: 0
+  minion: {fileID: 0}
+  megaMinion: {fileID: 0}
 --- !u!95 &6441091697774129058
 Animator:
   serializedVersion: 5

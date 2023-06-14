@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792775082735277145}
   - component: {fileID: 2792775082735277144}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Capsule (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2792775083031991970}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792775083054300296}
   - component: {fileID: 2792775083054300299}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792775083410017158}
   - component: {fileID: 2792775083410017153}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Capsule (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2792775083790870456}
   - component: {fileID: 2792775083790870459}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Capsule (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 2792775083891657701}
   - component: {fileID: 7784951655036090596}
   - component: {fileID: 7784951655036090597}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PickGun2
   m_TagString: Weapon
   m_Icon: {fileID: 0}

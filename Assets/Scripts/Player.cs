@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,10 +16,15 @@ public class Player : MonoBehaviour
 
     [Header("Health")]
     public GameObject sheild;
-    public GameObject sheildUI;
+    private float maxHp;
+    public GameObject[] allHearts;
+    public List<GameObject> allHalfsHearts;
+    public float heartHp;
+    public GameObject[] allSheilds;
+    public List<GameObject> allHalfsSheilds;
+    public int sheildStrength;
     public float potionStrength;
     public float hp;
-    public TextMeshProUGUI hpUI;
 
     [Header("Moving")]
     public float speed;
@@ -30,6 +36,8 @@ public class Player : MonoBehaviour
     [Header("Items")]
     public TextMeshProUGUI keyUI;
     public int keysAmount;
+    public TextMeshProUGUI ammoUI;
+    public int ammoAmount;
 
     [Header("Inventory")]
     public Slot[] slot;
@@ -40,10 +48,19 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        /*for (int i = 0; i < inventoryCapaticy; i++)
+        maxHp = hp;
+        heartHp = maxHp / allHearts.Length;
+
+        for (int i = allHearts.Length - 1; i >= 0; i--)
         {
-            Instantiate(slot)
-        }*/
+            allHalfsHearts.Add(allHearts[i].transform.GetChild(1).gameObject);
+            allHalfsHearts.Add(allHearts[i].transform.GetChild(0).gameObject);
+        }
+        for (int i = allSheilds.Length - 1; i >= 0; i--)
+        {
+            allHalfsSheilds.Add(allSheilds[i].transform.GetChild(1).gameObject);
+            allHalfsSheilds.Add(allSheilds[i].transform.GetChild(0).gameObject);
+        }
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -52,7 +69,38 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        hpUI.text = ("HP " + hp);
+        for (int i = 0; i < allHearts.Length * 2; i++)
+        {
+            if (hp < maxHp - (heartHp / 2 * i))
+            {
+                allHalfsHearts[i].SetActive(false);
+            }
+            else
+            {
+                allHalfsHearts[i].SetActive(true);
+            }
+        }
+
+        if (sheildStrength <= 0)
+            sheild.SetActive(false);
+
+        ammoUI.text = "" + ammoAmount;
+
+        if (currentItem.GetComponent<Gun>())
+            currentItem.GetComponent<Gun>().player = gameObject.GetComponent<Player>();
+
+        for (int i = 0; i < allSheilds.Length * 2; i++)
+        {
+            if (sheildStrength <= i)
+            {
+                allHalfsSheilds[i].SetActive(false);
+            }
+            else
+            {
+                allHalfsSheilds[i].SetActive(true);
+            }
+        }
+
         keyUI.text = ("" + keysAmount);
 
         moveInput = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -81,23 +129,23 @@ public class Player : MonoBehaviour
         {
             DropWeapon();
         }
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             SwitchWeapon(0);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SwitchWeapon(1);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             SwitchWeapon(2);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SwitchWeapon(3);
         }
-        if (Input.GetKeyDown(KeyCode.Keypad5))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             SwitchWeapon(4);
         }
@@ -110,17 +158,20 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("HPPotion"))
+        if (hp < maxHp)
+            if (collision.CompareTag("HPPotion"))
         {
-            hp += potionStrength;
-            Destroy(collision.gameObject);
-            Instantiate(particles, transform.position, Quaternion.identity);
+            {
+                hp += potionStrength;
+                Destroy(collision.gameObject);
+                Instantiate(particles, transform.position, Quaternion.identity);
+            }
         }
-        if (collision.CompareTag("Sheild"))
+        if (sheildStrength < 4)
+            if (collision.CompareTag("Sheild"))
         {
             sheild.SetActive(true);
-            sheildUI.SetActive(true);
-            sheildUI.GetComponent<Sheild>().Reset();
+            sheildStrength += 2;
             Destroy(collision.gameObject);
             Instantiate(particles, transform.position, Quaternion.identity);
         }
@@ -156,7 +207,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            sheildUI.GetComponent<Sheild>().ReduceTime(damage);
+            sheildStrength--;
         }
     }
 
@@ -166,28 +217,28 @@ public class Player : MonoBehaviour
         {
             if (currentNumber < weapons.Length - 1)
             {
-                slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+                slot[currentNumber].GetComponent<Image>().color = new Color(1, 1, 1, 0.2f);
                 currentNumber++;
-                slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+                slot[currentNumber].GetComponent<Image>().color = new Color(0, 1, 0, 0.2f);
             }
             else
             {
-                slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+                slot[currentNumber].GetComponent<Image>().color = new Color(1, 1, 1, 0.2f);
                 currentNumber = 0;
-                slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+                slot[currentNumber].GetComponent<Image>().color = new Color(0, 1, 0, 0.2f);
             }
         }
         else
         {
-            slot[currentNumber].GetComponent<Image>().color = new Color(1,1,1,0.2f);
+            slot[currentNumber].GetComponent<Image>().color = new Color(1, 1, 1, 0.2f);
             currentNumber = currentNumberF;
-            slot[currentNumber].GetComponent<Image>().color = new Color(0,1,0,0.2f);
+            slot[currentNumber].GetComponent<Image>().color = new Color(0, 1, 0, 0.2f);
         }
 
 
-        if(AllChildWithTag("Weapon").Count > 0)
+        if (AllChildWithTag("Weapon").Count > 0)
         {
-            for(int i = 0; i < AllChildWithTag("Weapon").Count; i++)
+            for (int i = 0; i < AllChildWithTag("Weapon").Count; i++)
             {
                 Destroy(AllChildWithTag("Weapon")[i]);
             }
@@ -246,6 +297,7 @@ public class Player : MonoBehaviour
         }
         return null;
     }
+
     public List<GameObject> AllChildWithTag(string tag)
     {
         Transform[] allChildren = GetComponentsInChildren<Transform>();

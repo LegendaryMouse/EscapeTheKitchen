@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 2492706710727236144, guid: 6932c06562fd98b4ab90561d87a33552, type: 3}
   - {fileID: 4085246193677388679, guid: 9522113a982ca4e419e81c3bc92bf99d, type: 3}
   spawned: 0
-  warningSignPrefab: {fileID: 4381810136585406411, guid: cae5d47faafd5824db2a649dec46176b, type: 3}
+  warningSignPrefab: {fileID: 7271981051367031625, guid: 78f7e05e3caa25e48ae7e6a3761a2cd4, type: 3}
   timeDelay: 2
 --- !u!58 &758442886552981855
 CircleCollider2D:

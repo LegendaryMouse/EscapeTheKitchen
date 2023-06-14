@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabSelf: {fileID: 4649662250948721260, guid: dbd82d70f204ab8428d0d07113ec6b81, type: 3}
+  pickupPrefabSelf: {fileID: 7655948124933399447}
 --- !u!1 &7655948125113859791
 GameObject:
   m_ObjectHideFlags: 0

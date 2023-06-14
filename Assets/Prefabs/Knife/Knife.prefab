@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4649662250948721266}
   - component: {fileID: 8249181467814801047}
+  - component: {fileID: -4605657782309658014}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Weapon
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4649662250948721260}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,14 +47,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dba88d728f0ab84a80cd2658b2971fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  meleeRange: 2
   offsetDegrees: 0
-  reloadTime: 0
-  startReloadTime: 0
+  reloadTime: 0.5
+  startReloadTime: 0.5
   shotPoint: {fileID: 4649662251799996213}
   bullet: {fileID: 5554762268254098049, guid: 29fed08d922b36444b951e74b8f534d7, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
   pickupPrefab: {fileID: 7655948124933399447, guid: 3929e8f21eb30a443b847f99e5d000d7, type: 3}
   haveKnife: 1
+--- !u!111 &-4605657782309658014
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4649662250948721260}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3455e8cc43ae3254493fa207c5450ba6, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3455e8cc43ae3254493fa207c5450ba6, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4649662251799996212
 GameObject:
   m_ObjectHideFlags: 0

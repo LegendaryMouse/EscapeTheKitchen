@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    public int ammoCost;
+    public int bulletsPerShot;
     public float offsetDegrees;
     public float reloadTime;
     public float startReloadTime;
+    public float razbros;
     public Transform shotPoint;
     public GameObject bullet;
     public GameObject shootSound;
     public GameObject pickupPrefab;
+    [System.NonSerialized] public Player player;
 
     bool facingRight = true;
     private Vector2 moveInput;
@@ -22,13 +26,18 @@ public class Gun : MonoBehaviour
         float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotation + offsetDegrees);
 
-        if (reloadTime <= 0)
+        if (reloadTime <= 0 && player.ammoAmount > ammoCost)
         {
             if (Input.GetMouseButton(0))
             {
-                Instantiate(bullet, shotPoint.position, transform.rotation);
-                Instantiate(shootSound, transform.position, Quaternion.identity);
+                for (int i = 0; i < bulletsPerShot; i++)
+                {
+                    GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
+                    b.transform.Rotate(new Vector3(0, 0, Random.Range(-razbros, razbros)));
+                }
+                    Instantiate(shootSound, transform.position, Quaternion.identity);
                 reloadTime = startReloadTime;
+                player.ammoAmount -= ammoCost;
             }
         }
         else

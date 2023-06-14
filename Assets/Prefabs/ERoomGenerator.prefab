@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5872707064248166066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 456707428264500215}
+  - component: {fileID: 6057159026409825848}
+  m_Layer: 0
+  m_Name: ERoomGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &456707428264500215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872707064248166066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6057159026409825848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5872707064248166066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713cecb5bdb8f41458a3d934de6ed67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabSelf: {fileID: 5872707064248166066}
+  haveBridges: 0
+  spawnDoor: 01010101
+  moreRoomsChance: 90
+  enemySpawner: {fileID: 4626698304986927709, guid: 827eccd836859be4ea10e030703a0f60, type: 3}
+  spawnersAmount: 4
+  width: 8
+  height: 8
+  doorWidth: 2
+  bridgeWidth: 4
+  wallBlock: {fileID: 3472183348580281995, guid: 0098070e00ed05a4ea66165d88de5b47, type: 3}
+  doorBlock: {fileID: 8334747611543658820, guid: 3466daf8ea79e5f49b5f193cfd5ac96c, type: 3}
+  manager: {fileID: 0}
+  spawnSpeed: 0.05
+  updateFrequency: 4
+  chestRoomFrequency: 15
+  chest: {fileID: 4413070454521960215, guid: 847f69c9226d2ec49821a75fdb4a3004, type: 3}
+  roomSign:
+  - {fileID: 3874455804148754083, guid: 25b7703b231ef014ca2a3ebac8acfea7, type: 3}
+  - {fileID: 3874455804148754083, guid: d1153d0edcceadc40b70a86f6235146d, type: 3}
+  - {fileID: 3874455804148754083, guid: 6c88c17b3931ab14cbae71d24238797a, type: 3}
+  - {fileID: 3874455804148754083, guid: 7b7b66a0e1c674e47836d6deb647a946, type: 3}
+  leftDoor: []
+  rightDoor: []
+  upDoor: []
+  downDoor: []

@@ -134,14 +134,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   distance: 10
-  damage: 3
+  damage: 2
   critChance: 50
-  critCof: 3
+  critCof: 5
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 320
-  particles: {fileID: 5604371697696484298, guid: 5d40a4a7037c79c468f22ba5df2a8861, type: 3}
+  particles: {fileID: 0}
   sticky: 1
+  piercing: 0
+  piercingStrength: 0
+  damageDelayTime: 10
 --- !u!114 &249474553195828130
 MonoBehaviour:
   m_ObjectHideFlags: 0
