@@ -38,7 +38,7 @@ public class Knife : MonoBehaviour
                 Instantiate(shootSound, transform.position, Quaternion.identity);
                 reloadTime = startReloadTime;
                 haveKnife = false;
-                player.DropWeapon();
+                player.DropWeapon(false);
                 player.SwitchWeapon(-1);
 
             }
@@ -83,7 +83,7 @@ public class Knife : MonoBehaviour
         Instantiate(shootSound, transform.position, Quaternion.identity);
         reloadTime = startReloadTime;
         Collider2D[] targets = Physics2D.OverlapAreaAll(new Vector2(transform.position.x, transform.position.y - 0.5f), new Vector2(transform.position.x, transform.position.y + 0.5f) + new Vector2(transform.right.x, transform.right.y) * meleeRange);
-        Debug.Log(targets.Length);
+        //Debug.Log(targets.Length);
         for (int i = 0; i < targets.Length; i++)
         {
             if (targets[i].tag == "Enemy")

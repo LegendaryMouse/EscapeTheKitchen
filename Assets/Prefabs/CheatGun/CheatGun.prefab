@@ -52,11 +52,11 @@ MonoBehaviour:
   ammoCost: -1
   bulletsPerShot: 1
   offsetDegrees: 0
-  reloadTime: 0.05
-  startReloadTime: 0.05
+  reloadTime: 0.03
+  startReloadTime: 0.03
   razbros: 0
   shotPoint: {fileID: 5388656378167008535}
-  bullet: {fileID: 5554762268254098049, guid: 9a584fbec7e61cb4989f9506704a2158, type: 3}
+  bullet: {fileID: 5554762268254098049, guid: 3a6a3662e2a09fb4e968d3e5dcd307b1, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
   pickupPrefab: {fileID: 2792775083891657723, guid: 9bde182607b9f164d92eafdb58061c29, type: 3}
 --- !u!1 &5388656376367819788
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 355
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.6024099, g: 0.2, b: 0.6117647, a: 1}
+  m_Color: {r: 0.30263197, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -217,7 +217,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 355
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.6024099, g: 0.2, b: 0.6117647, a: 1}
+  m_Color: {r: 0.30263197, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 355
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.43999353, g: 0.008410451, b: 0.5943396, a: 1}
+  m_Color: {r: 0.30263197, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

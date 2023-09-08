@@ -54,7 +54,7 @@ MonoBehaviour:
   offsetDegrees: 0
   reloadTime: 1.5
   startReloadTime: 1.5
-  razbros: 0
+  razbros: 1
   shotPoint: {fileID: 5388656378167008535}
   bullet: {fileID: 5554762268254098049, guid: 3a6a3662e2a09fb4e968d3e5dcd307b1, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}

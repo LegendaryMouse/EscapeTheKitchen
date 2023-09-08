@@ -46,6 +46,9 @@ public class Player : MonoBehaviour
     public int currentNumber = 0;
     public GameObject hands;
 
+    [Header("Cheats")]
+    public GameObject cheatGun;
+
     private void Start()
     {
         maxHp = hp;
@@ -127,7 +130,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            DropWeapon();
+            DropWeapon(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -149,6 +152,10 @@ public class Player : MonoBehaviour
         {
             SwitchWeapon(4);
         }
+        if(Input.GetKey(KeyCode.Z) & Input.GetKey(KeyCode.X) & Input.GetKeyDown(KeyCode.C))
+        {
+            CheatSpawn();
+        }
     }
 
     private void FixedUpdate()
@@ -160,21 +167,21 @@ public class Player : MonoBehaviour
     {
         if (hp < maxHp)
             if (collision.CompareTag("HPPotion"))
-        {
             {
-                hp += potionStrength;
+                {
+                    hp += potionStrength;
+                    Destroy(collision.gameObject);
+                    Instantiate(particles, transform.position, Quaternion.identity);
+                }
+            }
+        if (sheildStrength < 4)
+            if (collision.CompareTag("Sheild"))
+            {
+                sheild.SetActive(true);
+                sheildStrength += 2;
                 Destroy(collision.gameObject);
                 Instantiate(particles, transform.position, Quaternion.identity);
             }
-        }
-        if (sheildStrength < 4)
-            if (collision.CompareTag("Sheild"))
-        {
-            sheild.SetActive(true);
-            sheildStrength += 2;
-            Destroy(collision.gameObject);
-            Instantiate(particles, transform.position, Quaternion.identity);
-        }
         if (collision.CompareTag("Key"))
         {
             keysAmount++;
@@ -264,25 +271,43 @@ public class Player : MonoBehaviour
         currentItem.transform.SetParent(gameObject.transform);
     }
 
-    public void DropWeapon()
+    public void DropWeapon(bool saveWeapon)
     {
-        if (currentItem.GetComponent<Gun>())
+        if (saveWeapon)
+        {
+            if (currentItem.GetComponent<Gun>())
+            {
+                weapons[currentNumber] = null;
+                Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
+                GameObject weapon = FindChildWithTag("Weapon");
+                Instantiate(weapon.GetComponent<Gun>().pickupPrefab, transform.position - new Vector3(0, 2, 0), Quaternion.identity);
+                Destroy(weapon);
+                SwitchWeapon(currentNumber);
+            }
+            if (currentItem.GetComponent<Knife>())
+            {
+                weapons[currentNumber] = null;
+                Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
+                GameObject weapon = FindChildWithTag("Weapon");
+                Instantiate(weapon.GetComponent<Knife>().pickupPrefab, transform.position - new Vector3(0, 2, 0), Quaternion.identity);
+                Destroy(weapon);
+                SwitchWeapon(currentNumber);
+            }
+        }
+        else
         {
             weapons[currentNumber] = null;
             Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
             GameObject weapon = FindChildWithTag("Weapon");
-            Instantiate(weapon.GetComponent<Gun>().pickupPrefab, transform.position - new Vector3(0, 2, 0), Quaternion.identity);
             Destroy(weapon);
             SwitchWeapon(currentNumber);
         }
-        if (currentItem.GetComponent<Knife>())
-        {
-            weapons[currentNumber] = null;
-            Destroy(slot[currentNumber].transform.GetChild(0).gameObject);
-            GameObject weapon = FindChildWithTag("Weapon");
-            Destroy(weapon);
-            SwitchWeapon(currentNumber);
-        }
+    }
+
+    public void CheatSpawn()
+    {
+        Instantiate(cheatGun, transform.position, Quaternion.identity);
+        Debug.Log("cheater");
     }
 
     public GameObject FindChildWithTag(string tag)

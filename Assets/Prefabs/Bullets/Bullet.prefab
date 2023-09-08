@@ -103,12 +103,14 @@ MonoBehaviour:
   distance: 6
   damage: 1
   critChance: 15
-  critCof: 3
+  critCof: 2
   whatIsSolid:
     serializedVersion: 2
     m_Bits: 320
   particles: {fileID: 5604371697696484298, guid: 5d40a4a7037c79c468f22ba5df2a8861, type: 3}
   sticky: 0
+  piercing: 0
+  piercingStrength: 0
   damageDelayTime: 0.1
 --- !u!114 &249474553195828130
 MonoBehaviour:

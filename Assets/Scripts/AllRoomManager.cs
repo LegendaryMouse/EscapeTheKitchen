@@ -35,11 +35,12 @@ public class AllRoomManager : MonoBehaviour
         for (int i = 0; i < allRooms.Length; i++)
         {
             if (allRooms[i])
-                if (allRooms[i].GetComponent<EG>().further >= mostFurther & !allRooms[i].GetComponent<EG>().leftDoor[0] & !allRooms[i].GetComponent<EG>().rightDoor[0])
-                {
-                    mostFurther = allRooms[i].GetComponent<EG>().further;
-                    mostFurtherRoom = allRooms[i];
-                }
+                if (!(allRooms[i].GetComponent<EG>().currentSignNumber == 3))
+                    if (allRooms[i].GetComponent<EG>().further >= mostFurther & !allRooms[i].GetComponent<EG>().leftDoor[0] & !allRooms[i].GetComponent<EG>().rightDoor[0])
+                    {
+                        mostFurther = allRooms[i].GetComponent<EG>().further;
+                        mostFurtherRoom = allRooms[i];
+                    }
         }
 
         //Instantiate(item[Random.Range(0, item.Length)], mostFurtherRoom.transform.position, Quaternion.identity);

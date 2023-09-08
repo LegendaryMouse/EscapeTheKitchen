@@ -416,7 +416,7 @@ public class EG : MonoBehaviour
         }
         catch
         {
-            Debug.Log(name);
+            //Debug.Log(name);
             //SceneManager.LoadScene(0);
         }
     }

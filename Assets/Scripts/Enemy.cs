@@ -77,6 +77,8 @@ public class Enemy : MonoBehaviour
         animation1.Play("MoveDown");
 
         maxHp = hp;
+
+        speed = speed * Random.Range(0.6f, 1.4f);
     }
 
     private void Update()
@@ -214,7 +216,7 @@ public class Enemy : MonoBehaviour
 
     private void DamageSlowing(float slowing, float slowingTime)
     {
-        if (speed > slowing)
+        if (speed >= slowing)
         {
             speed -= slowing;
             StartCoroutine(SpeedNormalizer(slowing, slowingTime));
@@ -222,7 +224,7 @@ public class Enemy : MonoBehaviour
         else
         {
             StartCoroutine(SpeedNormalizer(speed, slowingTime));
-            speed = -0.1f;
+            speed = 0f;
         }
     }
 
@@ -262,7 +264,7 @@ public class Enemy : MonoBehaviour
             {
                 try
                 {
-                    Debug.Log("detaching");
+                    //Debug.Log("detaching");
                     transform.GetChild(0).SetParent(null);
                 }
                 catch

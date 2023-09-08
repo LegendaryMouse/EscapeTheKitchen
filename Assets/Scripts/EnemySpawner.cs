@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] spawnList;
     public bool spawned;
     public GameObject warningSignPrefab;
-    public float timeDelay;
+    [System.NonSerialized] public float timeDelay = 1f;
     GameObject warningSign;
 
     private void Start()

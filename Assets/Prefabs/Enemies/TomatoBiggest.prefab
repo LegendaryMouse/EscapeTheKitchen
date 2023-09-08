@@ -130,7 +130,7 @@ MonoBehaviour:
   damage: 3
   animation1: {fileID: 0}
   dieDrop:
-  - {fileID: 7655948124933399447, guid: 8f923eb965c82e64eb4fb918483771ef, type: 3}
+  - {fileID: 7655948124933399447, guid: bb15cc600f2384d43ac425eecc0b9301, type: 3}
   dieDropChance: 100
   enemyScore: 100
 --- !u!50 &1187210546538544097
