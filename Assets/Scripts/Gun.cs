@@ -14,7 +14,7 @@ public class Gun : MonoBehaviour
     public GameObject bullet;
     public GameObject shootSound;
     public GameObject pickupPrefab;
-    [System.NonSerialized] public Player player;
+    public Player player;
 
     bool facingRight = true;
     private Vector2 moveInput;

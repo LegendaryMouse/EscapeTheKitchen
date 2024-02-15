@@ -9,14 +9,14 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("Animations")]
-    public GameObject damageSound;
-    public GameObject dieSound;
-    public GameObject particles;
-    private Animator animation1;
+    public GameObject damageSound; // Sound effect for damage
+    public GameObject dieSound; // Sound effect for death
+    public GameObject particles; // Particle effect
+    private Animator animation1; // Player Animation
 
     [Header("Health")]
-    public GameObject sheild;
-    private float maxHp;
+    public GameObject sheild; // Player sheild
+    private float maxHp; // Player Animation
     public GameObject[] allHearts;
     public List<GameObject> allHalfsHearts;
     public float heartHp;
