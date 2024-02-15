@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 moveVelocity;
     private bool facingRight = true;
+    public Animator anime;
 
     [Header("Items")]
     public TextMeshProUGUI keyUI;
@@ -161,6 +162,16 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
+
+        if (moveVelocity == new Vector2(0, 0))
+        {
+            anime.SetBool("isIdle", true);
+        }
+        else
+        {
+            anime.SetBool("isIdle", false);
+            
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

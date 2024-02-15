@@ -36,6 +36,7 @@ public class EG : MonoBehaviour
     public GameObject[] rightDoor;
     public GameObject[] upDoor;
     public GameObject[] downDoor;
+    [System.NonSerialized] public GameObject isChest;
     [System.NonSerialized] public GameObject leftRoom;
     [System.NonSerialized] public GameObject rightRoom;
     [System.NonSerialized] public GameObject upRoom;
@@ -205,6 +206,7 @@ public class EG : MonoBehaviour
                             Invoke("SpawnedTogle", allEnemySpawners[0].GetComponent<EnemySpawner>().timeDelay);
                             StartCoroutine(DoorsToggler(true));
                             enemySpawned = true;
+                            allInRoom[i].GetComponent<Player>().transform.Translate((transform.position - allInRoom[i].transform.position) / 2);
                         }
                     }
                 }
@@ -212,6 +214,13 @@ public class EG : MonoBehaviour
                 {
                     currentSignNumber = 2;
                 }
+            }
+        }
+        else
+        {
+            if(!isChest) 
+            {
+                currentSignNumber = 2;
             }
         }
     }
@@ -426,7 +435,7 @@ public class EG : MonoBehaviour
         if (!(name == "0"))
             if (chestRoomFrequency > Random.Range(0, 100))
             {
-                Instantiate(chest, transform.position, Quaternion.identity);
+                isChest = Instantiate(chest, transform.position, Quaternion.identity);
                 currentSignNumber = 3;
             }
             else

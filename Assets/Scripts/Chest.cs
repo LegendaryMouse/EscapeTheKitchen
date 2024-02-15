@@ -17,6 +17,7 @@ public class Chest : MonoBehaviour
                 Instantiate(allLoot[Random.Range(0, allLoot.Length)], transform.position, Quaternion.identity);
                 collision.GetComponent<Player>().keysAmount--;
                 //looted = true;
+                Destroy(gameObject);
             }
         }
     }

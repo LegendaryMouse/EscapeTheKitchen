@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -13,10 +14,10 @@ public class Gun : MonoBehaviour
     public Transform shotPoint;
     public GameObject bullet;
     public GameObject shootSound;
+    public GameObject emptySound;
     public GameObject pickupPrefab;
     public Player player;
-
-    bool facingRight = true;
+    private bool facingRight = true;
     private Vector2 moveInput;
 
     private void Update()
@@ -26,18 +27,28 @@ public class Gun : MonoBehaviour
         float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotation + offsetDegrees);
 
-        if (reloadTime <= 0 && player.ammoAmount > ammoCost)
+        if (reloadTime <= 0)
         {
             if (Input.GetMouseButton(0))
             {
-                for (int i = 0; i < bulletsPerShot; i++)
+                if (player.ammoAmount > ammoCost)
                 {
-                    GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
-                    b.transform.Rotate(new Vector3(0, 0, Random.Range(-razbros, razbros)));
-                }
+                    for (int i = 0; i < bulletsPerShot; i++)
+                    {
+                        GameObject b = Instantiate(bullet, shotPoint.position, transform.rotation);
+                        b.transform.Rotate(new Vector3(0, 0, Random.Range(-razbros, razbros)));
+                    }
+
                     Instantiate(shootSound, transform.position, Quaternion.identity);
-                reloadTime = startReloadTime;
-                player.ammoAmount -= ammoCost;
+                    reloadTime = startReloadTime;
+                    player.ammoAmount -= ammoCost;
+
+                    //transform.Translate(Vector2.Lerp(transform.position, transform.position + transform.forward * 5, 0.8f));
+                }
+                else
+                {
+                    Instantiate(emptySound, transform.position, Quaternion.identity);
+                }
             }
         }
         else
