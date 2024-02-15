@@ -58,7 +58,7 @@ MonoBehaviour:
   razbros: 5
   shotPoint: {fileID: 5388656378167008535}
   bullet: {fileID: 5554762268254098049, guid: 7d4c1f31f0a10564d8e84fc7ef4b16b9, type: 3}
-  shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
+  shootSound: {fileID: 1062947579324547207, guid: 992fecf062b5ff04590e8b57a5c482e1, type: 3}
   pickupPrefab: {fileID: 2792775083891657723, guid: 0231a49c713ec4b48bfe8b139c32926f, type: 3}
   player: {fileID: 0}
 --- !u!1 &5388656376367819788
