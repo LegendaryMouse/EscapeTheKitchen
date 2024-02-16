@@ -14,7 +14,6 @@ public class Obst : MonoBehaviour
     public void TakeDamage(float damage)
     {
         hp = hp - (damage * dfCof);
-        GetComponent<AudioSource>().Play();
 
         GameObject text = Instantiate(damageText, transform.position - new Vector3(0, 1, 0), Quaternion.identity);
         text.transform.GetComponentInChildren<TextMeshPro>().color = new Color(1, 1, 0, 1);
@@ -31,8 +30,6 @@ public class Obst : MonoBehaviour
     {
         if (hp < 0)
         {
-            GetComponent<AudioSource>().Play();
-            GetComponent<AudioSource>().Play();
             Destroy(GetComponent<Collider2D>());
 
             if (transform.childCount > 0)

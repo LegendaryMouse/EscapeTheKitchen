@@ -218,9 +218,10 @@ public class EG : MonoBehaviour
         }
         else
         {
-            if(!isChest) 
+            if (!isChest)
             {
                 currentSignNumber = 2;
+                enemySpawned = true;
             }
         }
     }
@@ -376,7 +377,6 @@ public class EG : MonoBehaviour
     }
     public void GenerateWalls()
     {
-
         //upWallGenerator
         for (int i = 0; i < width; i++)
         {
@@ -454,6 +454,24 @@ public class EG : MonoBehaviour
         //Debug.Log(name);
         enemySpawnedCompletely = true;
     }
+    public void DetachParents(GameObject g)
+    {
+        if (g.transform.childCount > 0)
+        {
+            for (int i = 0; i <= g.transform.childCount + 1; i++)
+            {
+                try
+                {
+                    //Debug.Log("detaching");
+                    g.transform.GetChild(0).SetParent(null);
+                }
+                catch
+                {
+
+                }
+            }
+        }
+    }
 
     private IEnumerator DoorsToggler(bool enable)
     {
@@ -478,13 +496,25 @@ public class EG : MonoBehaviour
             for (int b = 0; b < doorWidth; b++)
             {
                 if (leftDoor[b])
+                {
                     leftDoor[b].SetActive(false);
+                    DetachParents(leftDoor[b]);
+                }
                 if (rightDoor[b])
+                {
                     rightDoor[b].SetActive(false);
+                    DetachParents(rightDoor[b]);
+                }
                 if (upDoor[b])
+                {
                     upDoor[b].SetActive(false);
+                    DetachParents(upDoor[b]);
+                }
                 if (downDoor[b])
+                {
                     downDoor[b].SetActive(false);
+                    DetachParents(downDoor[b]);
+                }
             }
         }
     }

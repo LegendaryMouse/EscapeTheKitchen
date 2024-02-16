@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 5388656376199905358}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.5, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5388656378210809661}
@@ -56,7 +56,6 @@ MonoBehaviour:
   reloadTime: 0.8
   startReloadTime: 0.8
   razbros: 5
-  isShooting: 0
   shotPoint: {fileID: 5388656378167008535}
   bullet: {fileID: 5554762268254098049, guid: 7d4c1f31f0a10564d8e84fc7ef4b16b9, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: 992fecf062b5ff04590e8b57a5c482e1, type: 3}

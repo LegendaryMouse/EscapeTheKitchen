@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4085246193677388679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -123,8 +123,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0036731958, y: 0.33425033}
-  m_Size: {x: 1.1473463, y: 3.2214992}
+  m_Offset: {x: 0, y: 0.6}
+  m_Size: {x: 1, y: 3}
   m_Direction: 0
 --- !u!50 &4085246193677388674
 Rigidbody2D:
@@ -173,7 +173,6 @@ MonoBehaviour:
   animation1: {fileID: 0}
   dieDrop:
   - {fileID: 749152774679433685, guid: 19d5be1043393864a8e004026c9eaaba, type: 3}
-  - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   - {fileID: 6706821837435375429, guid: 3aa464b4e218a804c87279cbbdcd0c98, type: 3}
   dieDropChance: 25
   enemyScore: 20

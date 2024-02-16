@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2492706710727236144}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.358718, y: -1.5090601, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -102,8 +102,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05687666, y: -0.053034663}
-  m_Size: {x: 0.67851925, y: 0.75122666}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
   m_Direction: 0
 --- !u!114 &2492706710727236141
 MonoBehaviour:
@@ -172,6 +172,7 @@ MonoBehaviour:
   boss: 0
   minion: {fileID: 0}
   megaMinion: {fileID: 0}
+  zone: {fileID: 704475667285831147, guid: 838fb5b1f4d7c8d46a5f4763a7f68e29, type: 3}
 --- !u!95 &6441091697774129058
 Animator:
   serializedVersion: 5

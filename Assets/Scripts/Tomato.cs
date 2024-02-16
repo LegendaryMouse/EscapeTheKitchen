@@ -11,9 +11,11 @@ public class Tomato : MonoBehaviour
     public bool boss;
     public GameObject minion;
     public GameObject megaMinion;
+    public GameObject zone;
 
     public void Explosion()
     {
+ 
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
         for(int i=0; i<targets.Length; i++)

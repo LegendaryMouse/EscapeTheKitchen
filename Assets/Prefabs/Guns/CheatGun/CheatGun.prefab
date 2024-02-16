@@ -50,13 +50,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammoCost: -1
-  bulletsPerShot: 1
+  bulletsPerShot: 10
   offsetDegrees: 0
   reloadTime: 0.03
   startReloadTime: 0.03
-  razbros: 0
+  razbros: 3
   shotPoint: {fileID: 5388656378167008535}
-  bullet: {fileID: 5554762268254098049, guid: 3a6a3662e2a09fb4e968d3e5dcd307b1, type: 3}
+  bullet: {fileID: 5554762268254098049, guid: 6e63affb231410349aebd13a7cdd4bec, type: 3}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
   emptySound: {fileID: 1062947579324547207, guid: c54a44125c8aa034f800e9a5f8d9e2a2, type: 3}
   pickupPrefab: {fileID: 2792775083891657723, guid: 9bde182607b9f164d92eafdb58061c29, type: 3}

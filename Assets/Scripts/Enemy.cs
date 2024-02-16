@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.XR;
 using static UnityEngine.ParticleSystem;
 
 public enum EnemyType
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Health")]
     public float hp;
-    float maxHp;
+    private float maxHp;
     public bool isDying = false;
     public GameObject damageSound;
     public GameObject dieSound;
@@ -119,7 +120,14 @@ public class Enemy : MonoBehaviour
         {
             isDying = true;
             //Debug.Log("Dying");
-            animation1.Play("Die");
+            if (animation1)
+                animation1.Play("Die");
+            if (GetComponent<Tomato>())
+            {
+                GameObject zona = Instantiate(GetComponent<Tomato>().zone, transform.position, Quaternion.identity);
+                Vector3 scale = new Vector3(GetComponent<Tomato>().explosionRadius * 0.8f, GetComponent<Tomato>().explosionRadius * 0.8f, 1);
+                zona.transform.localScale = scale;
+            }
             Invoke(nameof(Die), 1f);
             Instantiate(dieSound, transform.position, Quaternion.identity);
             Destroy(GetComponent<Collider2D>());
@@ -154,17 +162,17 @@ public class Enemy : MonoBehaviour
 
         DamageSlowing(damage, damage / 5);
 
-        if(tomato && tomato.boss)
+        if (tomato && tomato.boss)
         {
             if (hp > maxHp / 5)
             {
                 if (Random.Range(0, 100) > 90)
                 {
-                    Instantiate(tomato.megaMinion, transform.position, Quaternion.identity);
+                    Instantiate(tomato.megaMinion, transform.position + new Vector3(Random.Range(-5,5), Random.Range(-5, 5), 0), Quaternion.identity);
                 }
                 else if (Random.Range(0, 100) > 75)
                 {
-                    Instantiate(tomato.minion, transform.position, Quaternion.identity);
+                    Instantiate(tomato.minion, transform.position + new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0), Quaternion.identity);
                 }
             }
             else
@@ -178,7 +186,7 @@ public class Enemy : MonoBehaviour
                     Instantiate(tomato.minion, transform.position, Quaternion.identity);
                 }
             }
-        }    
+        }
     }
 
     private void Die()

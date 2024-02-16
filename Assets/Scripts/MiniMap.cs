@@ -8,7 +8,7 @@ public class MiniMap : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKey(KeyCode.Tab))
         {
             miniMap.SetActive(true);
         }

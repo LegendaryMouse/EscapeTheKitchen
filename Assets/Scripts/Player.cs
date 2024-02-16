@@ -226,6 +226,8 @@ public class Player : MonoBehaviour
         else
         {
             sheildStrength--;
+            Instantiate(particles, transform.position, Quaternion.identity);
+            Instantiate(damageSound, transform.position, Quaternion.identity);
         }
     }
 
