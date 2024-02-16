@@ -168,11 +168,11 @@ public class Enemy : MonoBehaviour
             {
                 if (Random.Range(0, 100) > 90)
                 {
-                    Instantiate(tomato.megaMinion, transform.position + new Vector3(Random.Range(-5,5), Random.Range(-5, 5), 0), Quaternion.identity);
+                    Instantiate(tomato.megaMinion, transform.position + new Vector3(Random.Range(-5,1), Random.Range(5, 5), 0), Quaternion.identity);
                 }
                 else if (Random.Range(0, 100) > 75)
                 {
-                    Instantiate(tomato.minion, transform.position + new Vector3(Random.Range(-5, 5), Random.Range(-5, 5), 0), Quaternion.identity);
+                    Instantiate(tomato.minion, transform.position + new Vector3(Random.Range(-5, -1), Random.Range(5, -5), 0), Quaternion.identity);
                 }
             }
             else

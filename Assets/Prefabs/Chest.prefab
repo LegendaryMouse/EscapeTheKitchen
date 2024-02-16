@@ -78,6 +78,8 @@ MonoBehaviour:
   - {fileID: 7655948124933399447, guid: 3929e8f21eb30a443b847f99e5d000d7, type: 3}
   - {fileID: 2792775083891657723, guid: bbf736a0af538284da1ffbc2f5858083, type: 3}
   - {fileID: 2792775083891657723, guid: 2d30f0f93210cb04f8dc9baec7633802, type: 3}
+  - {fileID: 2792775083891657723, guid: 0231a49c713ec4b48bfe8b139c32926f, type: 3}
+  - {fileID: 2792775083891657723, guid: 0231a49c713ec4b48bfe8b139c32926f, type: 3}
   keyPrice: 1
 --- !u!1 &5108927422360211036
 GameObject:

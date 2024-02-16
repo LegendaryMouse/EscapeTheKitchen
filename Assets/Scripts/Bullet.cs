@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     public int piercingStrength;
     public float damageDelayTime;
 
-    private bool stuck;
+    public  bool stuck;
     private int piercedTimes;
 
     private void Update()

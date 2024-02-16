@@ -53,5 +53,6 @@ MonoBehaviour:
   shotPoint: {fileID: 0}
   bullet: {fileID: 0}
   shootSound: {fileID: 1062947579324547207, guid: ff9c699fd4851014392729fe1a7fc81e, type: 3}
+  emptySound: {fileID: 1062947579324547207, guid: c54a44125c8aa034f800e9a5f8d9e2a2, type: 3}
   pickupPrefab: {fileID: 0}
   player: {fileID: 0}

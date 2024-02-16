@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyType: 0
-  speed: 3
+  speed: 1
   hp: 200
   isDying: 0
   damageSound: {fileID: 1062947579324547207, guid: 44d8402f8548e574caac97265c8ea368, type: 3}
@@ -172,6 +172,7 @@ MonoBehaviour:
   boss: 1
   minion: {fileID: 2492706710727236144, guid: d31c1753f56a17d43a08324e47fa0ec8, type: 3}
   megaMinion: {fileID: 2492706710727236144, guid: 6932c06562fd98b4ab90561d87a33552, type: 3}
+  zone: {fileID: 704475667285831147, guid: 838fb5b1f4d7c8d46a5f4763a7f68e29, type: 3}
 --- !u!95 &6441091697774129058
 Animator:
   serializedVersion: 5
